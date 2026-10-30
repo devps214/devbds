@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>স্পোর্টস ফ্রি - লাইভ গেমস</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: white;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #fbbf24;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+            background: #1e293b;
+        }
+        .cat-btn {
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #475569;
+        }
+        .cat-btn:hover, .cat-btn.active {
+            background: #fbbf24;
+            color: #0f172a;
+            border-color: #fbbf24;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .game-card {
+            background: #1e293b;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #334155;
+            transition: transform 0.3s;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: #fbbf24;
+        }
+        .card-img {
+            height: 160px;
+            background: #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background-image: url('https://via.placeholder.com/300x160/1e293b/fbbf24?text=SPORTS');
+            background-size: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .match-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #fbbf24;
+        }
+        .match-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        .live-badge {
+            background: #dc2626;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .watch-btn {
+            display: block;
+            background: #fbbf24;
+            color: #0f172a;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .watch-btn:hover {
+            background: #f59e0b;
+        }
+        footer {
+            background: #1e293b;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>⚽ স্পোর্টস ফ্রি 🏀</h1>
+    <p>ফ্রিতে লাইভ খেলা দেখুন, কোনো রেজিস্ট্রেশন ছাড়াই</p>
+</header>
+
+<div class="categories">
+    <button class="cat-btn active">সকল খেলা</button>
+    <button class="cat-btn">⚽ ফুটবল</button>
+    <button class="cat-btn">⚾ MLB</button>
+    <button class="cat-btn">🏒 NHL</button>
+    <button class="cat-btn">🏀 NBA</button>
+    <button class="cat-btn">🏏 ক্রিকেট</button>
+    <button class="cat-btn">🎾 টেনিস</button>
+</div>
+
+<div class="container">
+    <div class="games-grid" id="games-grid">
+        <!-- গেম কার্ডগুলো এখাবে আসবে -->
+    </div>
+</div>
+
+<footer>
+    <p>© ২০২৫ স্পোর্টস ফ্রি - সকল স্ট্রিম থার্ড-পার্টি সোর্স থেকে নেওয়া</p>
+    <p style="font-size:0.8rem; margin-top:10px;">DMCA - কন্টেন্টের মালিকানা তাদের নিজ নিজ মালিকদের</p>
+</footer>
+
+<script>
+    // এখানে আপনার গেমের ডাটা থাকবে
+    const games = [
+        {
+            title: "লিভারপুল বনাম চেলসি",
+            league: "প্রিমিয়ার লিগ",
+            time: "লাইভ",
+            category: "soccer",
+            streamUrl: "https://www.youtube.com/embed/VIDEO_ID_1",
+            image: "soccer1.jpg"
+        },
+        {
+            title: "ইয়াঙ্কিজ বনাম রেড সক্স",
+            league: "MLB",
+            time: "রাত ৮:০০",
+            category: "mlb",
+            streamUrl: "https://example.com/stream1",
+            image: "mlb1.jpg"
+        },
+        {
+            title: "ম্যাপল লিফস বনাম ক্যানাক্স",
+            league: "NHL",
+            time: "লাইভ",
+            category: "nhl",
+            streamUrl: "https://example.com/stream2",
+            image: "nhl1.jpg"
+        }
+    ];
+
+    function displayGames(category = 'all') {
+        const grid = document.getElementById('games-grid');
+        grid.innerHTML = '';
+        
+        const filtered = category === 'all' 
+            ? games 
+            : games.filter(game => game.category === category);
+        
+        filtered.forEach(game => {
+            const card = `
+                <div class="game-card">
+                    <div class="card-img" style="background-image: url('https://via.placeholder.com/300x160/1e293b/fbbf24?text=${game.title.split(' ')[0]}')">
+                        ${game.time === 'লাইভ' ? '<span class="live-badge" style="margin:10px; align-self:flex-start;">লাইভ</span>' : ''}
+                    </div>
+                    <div class="card-content">
+                        <div class="match-title">${game.title}</div>
+                        <div class="match-info">
+                            <span>🏆 ${game.league}</span>
+                            <span>⏰ ${game.time}</span>
+                        </div>
+                        <a href="stream.html?url=${encodeURIComponent(game.streamUrl)}&title=${encodeURIComponent(game.title)}" class="watch-btn">👉 খেলা দেখুন</a>
+                    </div>
+                </div>
+            `;
+            grid.innerHTML += card;
+        });
+    }
+
+    // ক্যাটাগরি বাটনে ক্লিক ইভেন্ট
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            let category = 'all';
+            if(this.innerText.includes('ফুটবল')) category = 'soccer';
+            if(this.innerText.includes('MLB')) category = 'mlb';
+            if(this.innerText.includes('NHL')) category = 'nhl';
+            
+            displayGames(category);
+        });
+    });
+
+    // প্রথমবার সব খেলা দেখাও
+    displayGames('all');
+</script>
+
+</body>
+</html>
